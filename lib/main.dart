@@ -1,4 +1,4 @@
-import 'package:blogapp/screens/option_screen.dart';
+import 'package:blogapp/screens/splash_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blueGrey,
       ),
-      home: const OptionScreen(),
+      home: const SplashScreen(),
     );
   }
 }

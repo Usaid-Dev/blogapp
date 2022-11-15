@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:blogapp/components/round_button.dart';
+import 'package:blogapp/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
@@ -238,6 +239,13 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
                       toastMessage(e.toString());
                     }
+                    // ignore: use_build_context_synchronously
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const HomeScreen(),
+                      ),
+                    );
                   },
                 )
               ],

@@ -206,7 +206,9 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       await Future.value(uploadTask);
 
                       var newUrl = await ref.getDownloadURL();
+
                       final User? user = _auth.currentUser;
+
                       postRef.child('Post List').child(date.toString()).set({
                         'pId': date.toString(),
                         'pImage': newUrl.toString(),
@@ -217,7 +219,15 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         'uId': user!.uid.toString(),
                       }).then(
                         (value) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const HomeScreen(),
+                            ),
+                          );
+
                           toastMessage('Post Published');
+
                           setState(() {
                             showSpinner = false;
                           });
@@ -225,6 +235,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                       ).onError(
                         (error, stackTrace) {
                           toastMessage(error.toString());
+
                           setState(() {
                             showSpinner = false;
                           });
@@ -237,15 +248,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
                         },
                       );
 
-                      toastMessage(e.toString());
+                      toastMessage('Add blog to upload');
                     }
-                    // ignore: use_build_context_synchronously
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const HomeScreen(),
-                      ),
-                    );
                   },
                 )
               ],

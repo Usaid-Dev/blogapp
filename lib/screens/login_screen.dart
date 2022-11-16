@@ -30,6 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
       inAsyncCall: showSpinner,
       child: Scaffold(
         appBar: AppBar(
+          automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text('Login'),
         ),
@@ -103,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
                               if (user != null) {
                                 print("Success");
-                                toastMessage("User Successfully Created");
+                                toastMessage("User Successfully Login");
                                 setState(
                                   () {
                                     showSpinner = false;

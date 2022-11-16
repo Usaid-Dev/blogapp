@@ -1,7 +1,11 @@
 import 'package:blogapp/screens/add_post.dart';
+import 'package:blogapp/screens/login_screen.dart';
+import 'package:blogapp/screens/option_screen.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -12,15 +16,16 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final dbRef = FirebaseDatabase.instance.reference().child('Posts');
+
+  FirebaseAuth auth = FirebaseAuth.instance;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Blogs'),
-        automaticallyImplyLeading: false,
-        actions: [
-          IconButton(
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: IconButton(
             icon: const Icon(
               Icons.add,
             ),
@@ -34,9 +39,33 @@ class _HomeScreenState extends State<HomeScreen> {
             },
             tooltip: 'Add blog',
           ),
-          const SizedBox(
-            width: 20,
-          )
+        ),
+        centerTitle: true,
+        title: const Text('Blogs'),
+        automaticallyImplyLeading: false,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 15),
+            child: IconButton(
+              icon: const Icon(
+                Icons.logout,
+              ),
+              onPressed: () {
+                auth.signOut().then(
+                  (value) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const OptionScreen(),
+                      ),
+                    );
+                  },
+                );
+                toastMessage('User log out');
+              },
+              tooltip: 'Log Out',
+            ),
+          ),
         ],
       ),
       body: Padding(
@@ -101,5 +130,16 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
     );
+  }
+
+  void toastMessage(String message) {
+    Fluttertoast.showToast(
+        msg: message.toString(),
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.SNACKBAR,
+        timeInSecForIosWeb: 1,
+        backgroundColor: Colors.white,
+        textColor: Colors.black,
+        fontSize: 16.0);
   }
 }

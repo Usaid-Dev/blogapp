@@ -1,4 +1,5 @@
 import 'package:blogapp/components/round_button.dart';
+import 'package:blogapp/screens/home_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -108,6 +109,11 @@ class _SignInState extends State<SignIn> {
                                     showSpinner = false;
                                   },
                                 );
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            const HomeScreen()));
                               }
                             } catch (e) {
                               print(e.toString());

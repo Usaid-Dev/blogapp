@@ -31,7 +31,6 @@ class _LoginScreenState extends State<LoginScreen> {
       inAsyncCall: showSpinner,
       child: Scaffold(
         appBar: AppBar(
-          automaticallyImplyLeading: false,
           centerTitle: true,
           title: const Text('Login'),
         ),

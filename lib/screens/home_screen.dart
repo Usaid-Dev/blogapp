@@ -107,7 +107,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.all(10.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
+                            color: Colors.grey,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Column(
@@ -127,6 +127,16 @@ class _HomeScreenState extends State<HomeScreen> {
                               ),
                               const SizedBox(
                                 height: 10,
+                              ),
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 10),
+                                child: Text(
+                                  (snapshot.value as Map)['uEmail'],
+                                  style: const TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w300),
+                                ),
                               ),
                               Padding(
                                 padding:
@@ -159,7 +169,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         padding: const EdgeInsets.all(10.0),
                         child: Container(
                           decoration: BoxDecoration(
-                            color: Colors.grey.shade300,
+                            color: Colors.grey,
                             borderRadius: BorderRadius.circular(10),
                           ),
                           child: Column(

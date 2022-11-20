@@ -1,16 +1,22 @@
-# blogapp
+# Flutter Blog App
 
-A new Flutter project.
+A completely responsive Blog App- Works on Android & IOS
 
-## Getting Started
+## Features
+- Firebase Login / Register 
+- Firebase logout
+- Firebase forgot password 
+- Add blogs
+- Search blogs
+- Light / Dark theme 
 
-This project is a starting point for a Flutter application.
+### Images of App
 
-A few resources to get you started if this is your first Flutter project:
+<h4>Option_Screen</h4>
+<img src="https://user-images.githubusercontent.com/67046451/202896994-aff55430-c493-4825-8b23-52933bad6326.png">
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+<h4>Login/Register_Screen</h4>
+<img src="https://user-images.githubusercontent.com/67046451/202897163-fcfc206e-1bdc-4ec9-ba4f-39446719cdb5.png">
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+<h4>Addblogs/Blogs_Screen</h4>
+<img src="https://user-images.githubusercontent.com/67046451/202897285-a608a62c-eeb2-4bd9-8b62-e82077f5a2ca.png">

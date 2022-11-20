@@ -6,6 +6,7 @@ import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -98,6 +99,9 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               Expanded(
                 child: FirebaseAnimatedList(
+                  defaultChild: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
                   query: dbRef.child('Post List'),
                   itemBuilder: (BuildContext context, DataSnapshot snapshot,
                       Animation<double> animation, int index) {
@@ -114,15 +118,25 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: FadeInImage.assetNetwork(
-                                  fit: BoxFit.cover,
-                                  width: MediaQuery.of(context).size.width * 1,
-                                  height:
-                                      MediaQuery.of(context).size.height * .25,
-                                  placeholder: 'images/blog.png',
-                                  image: (snapshot.value as Map)['pImage'],
+                              Container(
+                                height: 450,
+                                child: Stack(
+                                  children: [
+                                    const Center(
+                                        child: CircularProgressIndicator()),
+                                    FadeInImage.memoryNetwork(
+                                        fit: BoxFit.cover,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                1,
+                                        height:
+                                            MediaQuery.of(context).size.height,
+                                        fadeInDuration:
+                                            const Duration(milliseconds: 1500),
+                                        placeholder: kTransparentImage,
+                                        image:
+                                            (snapshot.value as Map)['pImage']),
+                                  ],
                                 ),
                               ),
                               const SizedBox(
@@ -176,15 +190,23 @@ class _HomeScreenState extends State<HomeScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(10),
-                                child: FadeInImage.assetNetwork(
-                                  fit: BoxFit.cover,
-                                  width: MediaQuery.of(context).size.width * 1,
-                                  height:
-                                      MediaQuery.of(context).size.height * .25,
-                                  placeholder: 'images/blog.png',
-                                  image: (snapshot.value as Map)['pImage'],
+                              Container(
+                                height: 450,
+                                child: Stack(
+                                  children: [
+                                    const Center(
+                                        child: CircularProgressIndicator()),
+                                    FadeInImage.memoryNetwork(
+                                        fit: BoxFit.cover,
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                1,
+                                        height:
+                                            MediaQuery.of(context).size.height,
+                                        placeholder: kTransparentImage,
+                                        image:
+                                            (snapshot.value as Map)['pImage']),
+                                  ],
                                 ),
                               ),
                               const SizedBox(

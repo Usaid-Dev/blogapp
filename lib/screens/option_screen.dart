@@ -21,7 +21,7 @@ class _OptionScreenState extends State<OptionScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('images/firebase.png'),
+              Image.asset('images/blog.png'),
               const SizedBox(height: 30),
               RoundButton(
                 title: 'Login',

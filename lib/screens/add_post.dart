@@ -114,14 +114,12 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   },
                   child: Center(
                     child: Container(
-                      height: MediaQuery.of(context).size.height * .2,
-                      width: MediaQuery.of(context).size.width * 1,
                       child: _image != null
                           ? ClipRRect(
                               child: Image.file(
                                 _image!.absolute,
-                                width: 100,
-                                height: 100,
+                                width: 500,
+                                height: 500,
                                 fit: BoxFit.fill,
                               ),
                             )
@@ -130,8 +128,8 @@ class _AddPostScreenState extends State<AddPostScreen> {
                                 color: Colors.grey.shade200,
                                 borderRadius: BorderRadius.circular(10),
                               ),
-                              width: 100,
-                              height: 100,
+                              width: 500,
+                              height: 500,
                               child: const Icon(
                                 Icons.camera_alt,
                                 color: Colors.blue,

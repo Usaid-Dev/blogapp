@@ -21,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
   TextEditingController passwordController = TextEditingController();
 
   bool showSpinner = false;
+  bool passenable = true;
 
   final _formkey = GlobalKey<FormState>();
   String email = '', password = '';
@@ -71,12 +72,25 @@ class _LoginScreenState extends State<LoginScreen> {
                         child: TextFormField(
                           controller: passwordController,
                           keyboardType: TextInputType.visiblePassword,
-                          obscureText: true,
-                          decoration: const InputDecoration(
+                          obscureText: passenable,
+                          decoration: InputDecoration(
                             hintText: 'Password',
-                            label: Text('Password'),
-                            prefixIcon: Icon(Icons.lock),
-                            border: OutlineInputBorder(),
+                            labelText: 'Password',
+                            prefixIcon: const Icon(Icons.lock),
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    if (passenable) {
+                                      passenable = false;
+                                    } else {
+                                      passenable = true;
+                                    }
+                                  });
+                                },
+                                icon: Icon(passenable == true
+                                    ? Icons.remove_red_eye
+                                    : Icons.password)),
+                            border: const OutlineInputBorder(),
                           ),
                           onChanged: (String value) {
                             password = value;

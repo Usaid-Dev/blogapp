@@ -21,7 +21,10 @@ class _OptionScreenState extends State<OptionScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Image.asset('images/blog.png'),
+              const Icon(
+                Icons.account_circle,
+                size: 250,
+              ),
               const SizedBox(height: 30),
               RoundButton(
                 title: 'Login',

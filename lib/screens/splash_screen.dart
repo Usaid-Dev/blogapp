@@ -51,10 +51,13 @@ class _SplashScreenState extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Image(
-            height: MediaQuery.of(context).size.height * .3,
-            width: MediaQuery.of(context).size.width * .6,
-            image: const AssetImage('images/blog.png'),
+          Container(
+            color: Colors.blueGrey.shade300,
+            child: Image(
+              height: MediaQuery.of(context).size.height * .3,
+              width: MediaQuery.of(context).size.width * .6,
+              image: const AssetImage('images/blog.png'),
+            ),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 30),

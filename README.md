@@ -7,6 +7,7 @@ A completely responsive Blog App- Works on Android & IOS
 - Firebase logout
 - Firebase forgot password 
 - Add blogs
+- Delete blogs
 - Search blogs
 - Light / Dark theme 
 
@@ -19,4 +20,4 @@ A completely responsive Blog App- Works on Android & IOS
 <img src="https://user-images.githubusercontent.com/67046451/202897163-fcfc206e-1bdc-4ec9-ba4f-39446719cdb5.png">
 
 <h4>Addblogs/Blogs_Screen</h4>
-<img src="https://user-images.githubusercontent.com/67046451/202897285-a608a62c-eeb2-4bd9-8b62-e82077f5a2ca.png">
+<img src="https://user-images.githubusercontent.com/67046451/203038723-9140252c-1b45-470c-af21-a9d44eefaf5f.png">

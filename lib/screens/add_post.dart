@@ -197,7 +197,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
 
                       firebase_storage.Reference ref = firebase_storage
                           .FirebaseStorage.instance
-                          .ref('/blogapp$date');
+                          .ref('/blogapp_${_auth.currentUser?.uid}_$date');
 
                       UploadTask uploadTask = ref.putFile(_image!.absolute);
 

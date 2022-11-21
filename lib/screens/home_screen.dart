@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:transparent_image/transparent_image.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -16,7 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final dbRef = FirebaseDatabase.instance.reference().child('Posts');
+  final dbRef = FirebaseDatabase.instance.ref().child('Posts');
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
@@ -145,11 +146,48 @@ class _HomeScreenState extends State<HomeScreen> {
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 10),
-                                child: Text(
-                                  (snapshot.value as Map)['uEmail'],
-                                  style: const TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w300),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text(
+                                      (snapshot.value as Map)['uEmail'],
+                                      style: const TextStyle(
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w300),
+                                    ),
+                                    Visibility(
+                                      visible: auth.currentUser?.uid ==
+                                          (snapshot.value as Map)['uId'],
+                                      child: ClipRRect(
+                                        borderRadius: BorderRadius.circular(50),
+                                        child: Material(
+                                          child: InkWell(
+                                            child: const Padding(
+                                              padding: EdgeInsets.all(3),
+                                              child: Icon(
+                                                Icons.delete,
+                                              ),
+                                            ),
+                                            onTap: () async {
+                                              final item = await FirebaseDatabase
+                                                  .instance
+                                                  .ref()
+                                                  .child('Posts')
+                                                  .child('Post List')
+                                                  .child(
+                                                      '${(snapshot.value as Map)['pId']}')
+                                                  .remove();
+                                              FirebaseStorage.instance
+                                                  .ref(
+                                                      '/blogapp_${auth.currentUser?.uid}_${(snapshot.value as Map)['pId']}')
+                                                  .delete();
+                                            },
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
                               Padding(
